@@ -1,0 +1,96 @@
+.menu-button {
+  z-index: 9999;
+  display: block;
+  position: relative;
+  float: left;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  font-size: 0;
+  text-indent: -9999px;
+  appearance: none;
+  box-shadow: none;
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.menu-button:focus {
+  outline: none;
+}
+
+.menu-button span {
+  display: block;
+  position: absolute;
+  top: 18px;
+  left: 4px;
+  right: 4px;
+  height: 4px;
+}
+
+@include theme('menu-button span', $text-color);
+@include theme('menu-button span::before', $text-color);
+@include theme('menu-button span::after', $text-color);
+
+.menu-button span::before,
+.menu-button span::after {
+  position: absolute;
+  display: block;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  content: "";
+}
+
+.menu-button span:before {
+  top: -12px;
+}
+.menu-button span:after {
+  bottom: -12px;
+}
+
+.ar-header {
+  position: fixed;
+  width: 100%;
+  height: $header-height;
+  box-shadow: 0 0 2px 0 rgba(0,0,0,0.5);
+}
+
+@include theme(ar-header, $header-bg-color);
+
+.menu-button {
+  transition: 400ms ease;
+  transition-property: transform;
+  transform: translateX(0);
+}
+
+.menu-button.is-open {
+  transform: translateX($side-menu-width);
+}
+
+.menu-button.is-open span::after,
+.menu-button.is-open span::before {
+  width: 50%;
+}
+
+.menu-button span::before {
+  transform-origin: top left;
+  transition: transform 0.3s, width 0.3s, top 0.3s;
+}
+
+.menu-button.is-open span::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.menu-button span::after {
+  transform-origin: bottom left;
+  transition: transform 0.3s, width 0.3s, bottom 0.3s;
+}
+.menu-button.is-open span::after {
+  bottom: 0;
+  transform: rotate(-45deg);
+}

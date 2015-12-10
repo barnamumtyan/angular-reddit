@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <title>{{title}}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title></title>
+
+    <!-- build:css /dist/libs.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css /dist/app.css -->
+    <!-- inject:css -->
+    <link rel="stylesheet" type="text/css" href="src/assets/css/app.css">
+    <!-- endinject -->
+    <!-- endbuild -->
+</head>
+<body>
+<!--[if lt IE 10]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<ng-include src="'src/app/layout/layout.html'"></ng-include>
+
+<!-- build:js /dist/libs.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/lodash/lodash.js"></script>
+<script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+<script src="bower_components/angular-spinners/dist/angular-spinners.min.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js /dist/app.js -->
+<!-- inject:js -->
+<script src="/src/app/core/lodash/lodash.module.js"></script>
+
+<script src="/src/app/core/logger/logger.module.js"></script>
+<script src="/src/app/core/logger/logger.service.js"></script>
+
+<script src="/src/app/core/router/router.module.js"></script>
+<script src="/src/app/core/router/router-helper.service.js"></script>
+
+<script src="/src/app/core/pubsub/pubsub.module.js"></script>
+<script src="/src/app/core/pubsub/pubsub.service.js"></script>
+<script src="/src/app/core/pubsub/pubsub.constants.js"></script>
+
+<script src="/src/app/core/exception/exception.module.js"></script>
+<script src="/src/app/core/exception/exception-handler.provider.js"></script>
+<script src="/src/app/core/exception/exception.service.js"></script>
+
+<script src="/src/app/core/core.module.js"></script>
+
+<script src="/src/app/api/api.module.js"></script>
+<script src="/src/app/api/url-builder.service.js"></script>
+<script src="/src/app/api/api.service.js"></script>
+
+<script src="/src/app/layout/layout.module.js"></script>
+<script src="/src/app/layout/layout.controller.js"></script>
+<script src="/src/app/layout/header/header.directive.js"></script>
+<script src="/src/app/layout/content/posts.controller.js"></script>
+<script src="/src/app/layout/content/post.directive.js"></script>
+<script src="/src/app/layout/menu/side-menu.directive.js"></script>
+
+<script src="/src/app/app.module.js"></script>
+<script src="/src/app/app.routes.js"></script>
+<script src="/src/app/app.run.js"></script>
+<!-- endinject -->
+<!-- endbuild -->
+</body>
+</html>

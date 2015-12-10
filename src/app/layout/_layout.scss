@@ -1,0 +1,55 @@
+$side-menu-width: 260px;
+$header-height: 40px;
+
+@import "content/loader";
+@import "menu/sidemenu";
+@import "header/header";
+
+
+.ar-container {
+  padding: $header-height + 30px 20px 0 20px;
+  min-height: 100vh;
+  height: 100vh;
+}
+@include theme(ar-container, $container-bg-color);
+
+.ar-card {
+  width: 100%;
+  min-height: 50px;
+  padding: 5px 10px 5px 0;
+  margin: 10px 0;
+  border-radius: 3px;
+  border: none;
+}
+
+@include theme(ar-card, $card-bg-color);
+
+body {
+  overflow-x: hidden;
+}
+
+// Animations
+
+.animate-posts.ng-enter,
+.animate-posts.ng-enter.ng-enter-active,
+.animate-posts.ng-leave,
+.animate-posts.ng-leave.ng-leave-active{
+  transition: 400ms ease linear;
+  transition-property: opacity;
+}
+
+.animate-posts.ng-enter {
+  opacity: 0;
+}
+
+.animate-posts.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+
+.animate-posts.ng-leave {
+  opacity: 1;
+}
+
+.animate-posts.ng-leave.ng-leave-active {
+  opacity: 0;
+}

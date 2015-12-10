@@ -1,0 +1,7 @@
+<div class="ar-container">
+
+  <spinner name="postsSpinner" show="!vm.posts.isLoaded">
+    <div class="loader"></div>
+  </spinner>
+  <ar-post ng-repeat="post in vm.posts.list" post="post"></ar-post>
+</div>

@@ -1,0 +1,10 @@
+<div ng-class="{ 'is-open': vm.sideMenu.isOpen }" class="off-canvas ar-side-menu">
+
+<ul>
+  <li ng-repeat="subReddit in vm.subReddits.list">
+    <a ng-click="vm.subReddits.select(subReddit.data)">{{subReddit.data.display_name}}</a>
+  </li>
+</ul>
+
+  <uib-accordion close-others="oneAtATime"></uib-accordion>
+</div>

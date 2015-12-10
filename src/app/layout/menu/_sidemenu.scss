@@ -1,0 +1,25 @@
+.off-canvas {
+  position: fixed;
+  width: $side-menu-width;
+  left: -$side-menu-width;
+  top: 0;
+  height: 100%;
+  box-shadow: 5px 0px 5px 0px rgba(0,0,0,0.5);
+}
+
+.ar-side-menu {
+  z-index: 99999;
+}
+@include theme(ar-side-menu, $side-menu-bg-color);
+
+// Animations
+
+.off-canvas {
+  transition: 400ms ease;
+  transition-property: transform;
+  transform: translateX(0);
+}
+
+.off-canvas.is-open {
+  transform: translateX($side-menu-width);
+}

@@ -1,0 +1,29 @@
+$text-color: (
+  default: black,
+  night: white
+);
+$header-bg-color: (
+  default: #F5F5F5,
+  night: #A1A1A1
+);
+$side-menu-bg-color: (
+  default: #FFFFFF,
+  night: #818181
+);
+$card-bg-color: (
+  default: #FFFFFF,
+  night: #A1A1A1
+);
+$container-bg-color: (
+  default: #E5E5E5,
+  night: #4F4F4F
+);
+
+@mixin theme($class, $color) {
+  .#{$class} {
+    background-color: map-get($color, default);
+  }
+  .night .#{$class} {
+    background-color: map-get($color, night);
+  }
+};
