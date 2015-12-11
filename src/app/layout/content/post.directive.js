@@ -9,7 +9,7 @@
 
   function directive(LAYOUT_PATH) {
     return {
-      restrict:         '',
+      restrict:         'E',
       controller:       Controller,
       controllerAs:     'vm',
       templateUrl:      LAYOUT_PATH + 'content/post.html',

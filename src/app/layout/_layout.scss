@@ -9,7 +9,6 @@ $header-height: 40px;
 .ar-container {
   padding: $header-height + 30px 20px 0 20px;
   min-height: 100vh;
-  height: 100vh;
 }
 @include theme(ar-container, $container-bg-color);
 

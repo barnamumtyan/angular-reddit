@@ -21,6 +21,7 @@ you're welcome to check it out :smile:.
 ## What's next ##
 I will keep adding features and refactoring, when I learn something interesting.
 Stuff todo:
+  - [ ] Night mode theme
   - [ ] Proper error handling
   - [ ] Morphing element animations
   - [ ] Write tests
