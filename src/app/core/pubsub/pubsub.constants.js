@@ -6,7 +6,7 @@
 
   angular.module('pubsub')
     .constant('PSEVENT', {
-      'SIDEMENU_TOGGLE':  'toggle-side-menu'
+      'SIDEMENU_TOGGLE': 'toggle-side-menu'
     });
 
 }());

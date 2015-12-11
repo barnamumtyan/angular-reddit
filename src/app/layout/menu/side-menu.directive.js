@@ -21,21 +21,30 @@
   }
 
   /*@ngInject*/
-  function Controller(pubsub, $scope, _, redditApi, $state) {
+  function Controller(pubsub, $scope, _, redditApi, $state, $stateParams) {
 
     var sideMenu = {
       isOpen: false
     };
 
     var subReddits = {
-      list:   [],
       select: selectSubreddit
+    };
+
+    var sort = {
+      select: selectSort
+    };
+
+    var time = {
+      select: selectTime
     };
 
     // export
     _.extend(this, {
       sideMenu:   sideMenu,
-      subReddits: subReddits
+      subReddits: subReddits,
+      sort:       sort,
+      time:       time
     });
 
     init();
@@ -45,8 +54,15 @@
       pubsub.subscribe(pubsub.event.SIDEMENU_TOGGLE, onSideMenuToggle, { scope: $scope });
 
       redditApi.getSubreddits({ limit: 10 }).then(function(response) {
-        console.log(response);
         subReddits.list = response;
+      });
+
+      redditApi.getSortOptions().then(function(response) {
+        sort.list = response;
+      });
+
+      redditApi.getTimeOptions().then(function(response) {
+        time.list = response;
       });
     }
 
@@ -54,16 +70,25 @@
       sideMenu.isOpen = isMenuOpen;
     }
 
-    function selectSubreddit(subReddit) {
-      $state.go('posts', { subReddit: subReddit.display_name });
+    function selectSubreddit(selectedSubReddit) {
+      goTo({ subReddit: selectedSubReddit.display_name });
     }
 
-    function selectSort() {
-
+    function selectSort(selectedSort) {
+      goTo({ sort: selectedSort });
     }
 
-    function selectTime() {
+    function selectTime(selectedTime) {
+      goTo({ time: selectedTime });
+    }
 
+    function goTo(opts) {
+      //default values from stateParams if not set
+      opts.sort = opts.sort || $stateParams.sort;
+      opts.time = opts.time || $stateParams.time;
+      opts.subReddit = opts.subReddit || $stateParams.subReddit;
+
+      $state.go('posts', { subReddit: opts.subReddit, sort: opts.sort, time: opts.time });
     }
   }
 }());

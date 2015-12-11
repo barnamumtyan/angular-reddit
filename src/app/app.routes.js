@@ -8,7 +8,7 @@
     .module('app')
     .config(config);
 
-  config.$inject = ['$stateProvider', '$urlRouterProvider'];
+  /*@ngInject*/
   function config($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/r/all');
     $stateProvider
@@ -16,7 +16,13 @@
         url:          '/r/:subReddit?sort&time',
         controller:   'Posts',
         controllerAs: 'vm',
-        templateUrl:  'src/app/layout/content/posts.html',
+        templateUrl:  'src/app/layout/content/posts.html'
+      })
+      .state('search', {
+        url:          '/search/:query',
+        controller:   'Posts',
+        controllerAs: 'vm',
+        templateUrl:  'src/app/layout/content/posts.html'
       });
   }
 }());

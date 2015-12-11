@@ -1,10 +1,28 @@
 <div ng-class="{ 'is-open': vm.sideMenu.isOpen }" class="off-canvas ar-side-menu">
 
-<ul>
-  <li ng-repeat="subReddit in vm.subReddits.list">
-    <a ng-click="vm.subReddits.select(subReddit.data)">{{subReddit.data.display_name}}</a>
-  </li>
-</ul>
 
-  <uib-accordion close-others="oneAtATime"></uib-accordion>
+
+  <uib-accordion close-others="oneAtATime">
+    <uib-accordion-group heading="Sort:">
+      <div class="list-group">
+        <a class="list-group-item" ng-repeat="sort in ::vm.sort.list" ng-click="vm.sort.select(sort)">
+          {{sort}}
+        </a>
+      </div>
+    </uib-accordion-group>
+    <uib-accordion-group heading="Time:">
+      <div class="list-group">
+        <a class="list-group-item" ng-repeat="time in ::vm.time.list" ng-click="vm.time.select(time)">
+          {{time}}
+        </a>
+      </div>
+    </uib-accordion-group>
+    <uib-accordion-group heading="Subreddits:" is-open="true">
+      <div class="list-group">
+        <a class="list-group-item" ng-repeat="subReddit in ::vm.subReddits.list" ng-click="vm.subReddits.select(subReddit.data)">
+          {{subReddit.data.display_name}}
+        </a>
+      </div>
+    </uib-accordion-group>
+  </uib-accordion>
 </div>

@@ -1,6 +1,6 @@
 <div class="ar-container">
 
-  <spinner name="postsSpinner" show="!vm.posts.isLoaded">
+  <spinner name="{{vm.spinner.name}}" group="vm.spinner.group" show="true">
     <div class="loader"></div>
   </spinner>
   <ar-post ng-repeat="post in vm.posts.list" post="post"></ar-post>

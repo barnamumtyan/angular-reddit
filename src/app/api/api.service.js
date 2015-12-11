@@ -8,7 +8,7 @@
     .factory('redditApi', factory);
 
   /*@ngInject*/
-  function factory(logger, $q, $http, urlBuilder) {
+  function factory(logger, $q, $http, urlBuilder, _, spinnerService) {
 
     var HOST = 'reddit.com';
     var DEFAULT_SUBREDDIT = 'all';
@@ -16,15 +16,32 @@
     var DEFAULT_TIME = 'day';
     var DEFAULT_COMMENT_LIMIT = 30;
     var DEFAULT_SUBREDDIT_LIMIT = 10;
+    var SORT_OPTIONS = ['hot', 'new', 'rising', 'top', 'controversial'];
+    var TIME_OPTIONS = ['day', 'week', 'month', 'year'];
 
     var service = {
       getPosts:         getPosts,
       getPost:          getPost,
       getSearchResults: getSearchResults,
       getSubreddits:    getSubreddits,
-      getSubreddit:     getSubreddit
+      getSubreddit:     getSubreddit,
+      getSortOptions:   getSortOptions,
+      getTimeOptions:   getTimeOptions
+
     };
     return service;
+
+    function getSortOptions() {
+      return $q(function(resolve) {
+        resolve(_.clone(SORT_OPTIONS));
+      });
+    }
+
+    function getTimeOptions() {
+      return $q(function(resolve) {
+        resolve(_.clone(TIME_OPTIONS));
+      });
+    }
 
     function getPosts(opts) {
       var route = [
@@ -108,18 +125,22 @@
       };
 
       return $q(function(resolve, reject) {
+
         $http(requestOpts).then(
+
           function onSuccess(response) {
-            logger.info('Successful response from: ' + route.join('/'), response);
-            resolve(response.data.data.children);
+            var data = response.data.data ? response.data.data.children : response.data.data;
+            logger.success('Response from: ' + route.join('/'), response);
+
+            resolve(data);
           },
           function onError(response) {
-            logger.info('Error', response);
+            logger.error('response failed from: ' + route.join('/'), response);
+            spinnerService.hideGroup('contentSpinners');
             reject();
           }
         );
       });
     }
-
   }
 }());

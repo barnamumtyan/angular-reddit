@@ -17,25 +17,32 @@
       replace:      true,
       scope:        {}
     };
-  }
 
-  /*@ngInject*/
-  function Controller(pubsub, _) {
+    /*@ngInject*/
+    function Controller(pubsub, _, $state, $sanitize) {
 
-    var sideMenu = {
-      isOpen: false,
-      toggle: toggleSideMenu
-    };
+      var sideMenu = {
+        isOpen: false,
+        toggle: toggleSideMenu
+      };
 
+      // export
+      _.extend(this, {
+        sideMenu: sideMenu,
+        search:   search,
+        query:    ''
+      });
 
-    _.extend(this, {
-      sideMenu:  sideMenu,
-      subReddit: subReddit
-    });
+      function toggleSideMenu() {
+        sideMenu.isOpen = !sideMenu.isOpen;
+        pubsub.publish(pubsub.event.SIDEMENU_TOGGLE, sideMenu.isOpen);
+      }
 
-    function toggleSideMenu() {
-      sideMenu.isOpen = !sideMenu.isOpen;
-      pubsub.publish(pubsub.event.SIDEMENU_TOGGLE, sideMenu.isOpen);
+      function search(query) {
+        if (query) {
+          $state.go('search', { query: $sanitize(query) });
+        }
+      }
     }
   }
 }());
