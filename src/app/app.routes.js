@@ -16,13 +16,22 @@
         url:          '/r/:subReddit?sort&time',
         controller:   'Posts',
         controllerAs: 'vm',
-        templateUrl:  'src/app/layout/content/posts.html'
+        templateUrl:  'src/app/layout/content/posts.html',
+        pageTitle:    'posts'
       })
       .state('search', {
         url:          '/search/:query',
         controller:   'Posts',
         controllerAs: 'vm',
-        templateUrl:  'src/app/layout/content/posts.html'
+        templateUrl:  'src/app/layout/content/posts.html',
+        pageTitle:    'search'
+      })
+      .state('comments', {
+        url:          '/r/:subReddit/comments/:id',
+        controller:   'Comments',
+        controllerAs: 'vm',
+        templateUrl:  'src/app/layout/content/comments.html',
+        pageTitle:    'comments'
       });
   }
 }());

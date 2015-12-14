@@ -1,3 +1,16 @@
-<div class="ar-card animate-posts" ng-animate="animate-posts">
-  {{vm.post.data.title}}
+<div class="media ar-card animate-posts" ng-animate="animate-posts">
+  <div class="score">{{vm.post.score}}</div>
+  <div class="media-left" ng-if="vm.post.thumbnail && vm.post.thumbnail != 'self' && vm.post.thumbnail != 'default' && vm.post.thumbnail != 'nsfw'">
+    <img ng-src="{{vm.post.thumbnail}}">
+  </div>
+  <div class="media-body">
+    <span>{{vm.post.link_flair_text}}</span>
+    <a ng-click="vm.goToExternalLink(vm.post.url)">{{vm.post.title}}</a>
+        <span ng-bind="'('+vm.post.domain+')'"></span>
+    <div>
+      <span>submitted by {{vm.post.author}} to {{vm.post.subreddit}} about {{vm.post.created_utc | toLocal | amTimeAgo}}</span>
+    </div>
+
+    <span><a ui-sref="comments({subReddit: vm.post.subreddit, id: vm.post.id})">{{vm.post.num_comments}} comments</a></span>
+  </div>
 </div>

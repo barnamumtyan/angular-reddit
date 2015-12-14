@@ -10,7 +10,7 @@
     this.config = {
       // These are the properties we need to set
       // $routeProvider: undefined
-      docTitle: 'Angular sample',
+      docTitle: 'Angular reddit',
       // resolveAlways: {ready: function(){ } }
     };
 
@@ -46,8 +46,12 @@
           if (toState.pageTitle) {
             title = routeHelperConfig.config.docTitle + ' - ' + (toState.pageTitle || '');
             // data bind to <title> in index/html
-            $rootScope.title = title;
+
+          } else {
+            title = routeHelperConfig.config.docTitle;
           }
+
+          $rootScope.title = title;
         });
     }
 

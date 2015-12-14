@@ -28,7 +28,9 @@
     "bootstrap-sass": "~3.3.6",
     "angular-spinners": "~3.0.4",
     "angular-bootstrap": "~0.14.3",
-    "angular-sanitize": "~1.4.8"
+    "angular-sanitize": "~1.4.8",
+    "angular-recursion": "~1.0.5",
+    "angular-moment": "~0.10.3"
   },
   "devDependencies": {}
 }

@@ -1,0 +1,17 @@
+.comment-card {
+  width: 100%;
+  min-height: 50px;
+  border-radius: 3px;
+  border: none;
+  margin-top: 10px;
+}
+
+.sub-comment {
+  padding-left: 15px;
+}
+
+.comment-body {
+  padding: 5px 0 5px 0;
+  margin: 0 0;
+}
+@include theme(comment-card, $card-bg-color);

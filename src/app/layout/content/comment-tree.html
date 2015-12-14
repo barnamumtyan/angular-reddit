@@ -1,0 +1,10 @@
+<div ng-if="vm.comment.body">
+  <div class="comment-body">
+    {{vm.comment.body}}
+  </div>
+  <div class="sub-comment">
+    <div ng-repeat="reply in vm.comment.replies.data.children">
+      <comment-tree ng-if="reply.data.body" comment="reply.data"></comment-tree>
+    </div>
+  </div>
+</div>

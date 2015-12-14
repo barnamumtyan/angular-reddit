@@ -4,6 +4,8 @@ $header-height: 40px;
 @import "content/loader";
 @import "menu/sidemenu";
 @import "header/header";
+@import "content/comment";
+@import "content/post";
 
 
 .ar-container {
@@ -12,19 +14,12 @@ $header-height: 40px;
 }
 @include theme(ar-container, $container-bg-color);
 
-.ar-card {
-  width: 100%;
-  min-height: 50px;
-  padding: 5px 10px 5px 0;
-  margin: 10px 0;
-  border-radius: 3px;
-  border: none;
-}
-
-@include theme(ar-card, $card-bg-color);
-
 body {
   overflow-x: hidden;
+}
+
+a {
+  cursor: pointer;
 }
 
 // Animations

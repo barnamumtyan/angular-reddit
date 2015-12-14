@@ -3,5 +3,7 @@
   <spinner name="{{vm.spinner.name}}" group="vm.spinner.group" show="true">
     <div class="loader"></div>
   </spinner>
-  <ar-post ng-repeat="post in vm.posts.list" post="post.data"></ar-post>
+  <div class="comment-card" ng-repeat="comment in vm.post.comments">
+    <comment-tree comment="comment.data"></comment-tree>
+  </div>
 </div>

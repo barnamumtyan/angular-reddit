@@ -5,7 +5,8 @@
   'use strict';
 
   angular.module('layout')
-    .directive('arPost', directive);
+    .directive('arPost', directive)
+    .filter('toLocal', toLocal);
 
   function directive(LAYOUT_PATH) {
     return {
@@ -21,7 +22,21 @@
   }
 
   /*@ngInject*/
-  function Controller() {
+  function Controller(_, $window) {
+    _.extend(this, {
+      goToExternalLink: goToExternalLink
+    });
 
+    function goToExternalLink(url) {
+      $window.open(url, '_blank');
+    }
+  }
+
+  function toLocal() {
+    return function(input) {
+      var d = new Date(0);
+      d.setUTCSeconds(input);
+      return d;
+    };
   }
 }());

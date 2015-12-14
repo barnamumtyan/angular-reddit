@@ -5985,6 +5985,54 @@ button.close {
   bottom: 0;
   transform: rotate(-45deg); }
 
+.comment-card {
+  width: 100%;
+  min-height: 50px;
+  border-radius: 3px;
+  border: none;
+  margin-top: 10px; }
+
+.sub-comment {
+  padding-left: 15px; }
+
+.comment-body {
+  padding: 5px 0 5px 0;
+  margin: 0 0; }
+
+.comment-card {
+  background-color: #FFFFFF; }
+
+.night .comment-card {
+  background-color: #A1A1A1; }
+
+.ar-card {
+  width: 100%;
+  min-height: 50px;
+  padding: 5px 10px 5px 0;
+  margin: 10px;
+  border-radius: 3px;
+  border: none; }
+
+.ar-card {
+  background-color: #FFFFFF; }
+
+.night .ar-card {
+  background-color: #A1A1A1; }
+
+.ar-card span {
+  font-size: .8em;
+  color: #888; }
+
+.ar-card img {
+  width: 70px;
+  height: auto;
+  float: left; }
+
+.score {
+  padding: 10px 10px 0 10px;
+  float: left;
+  color: #c6c6c6; }
+
 .ar-container {
   padding: 70px 20px 0 20px;
   min-height: 100vh; }
@@ -5995,22 +6043,11 @@ button.close {
 .night .ar-container {
   background-color: #4F4F4F; }
 
-.ar-card {
-  width: 100%;
-  min-height: 50px;
-  padding: 5px 10px 5px 0;
-  margin: 10px 0;
-  border-radius: 3px;
-  border: none; }
-
-.ar-card {
-  background-color: #FFFFFF; }
-
-.night .ar-card {
-  background-color: #A1A1A1; }
-
 body {
   overflow-x: hidden; }
+
+a {
+  cursor: pointer; }
 
 .animate-posts.ng-enter,
 .animate-posts.ng-enter.ng-enter-active,

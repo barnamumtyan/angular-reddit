@@ -1,0 +1,35 @@
+.ar-card {
+  width: 100%;
+  min-height: 50px;
+  padding: 5px 10px 5px 0;
+  margin: 10px;
+  border-radius: 3px;
+  border: none;
+}
+
+@include theme(ar-card, $card-bg-color);
+
+.ar-card span {
+  font-size: .8em;
+  color: #888;
+}
+
+.ar-card img {
+  width: 70px;
+  height: auto;
+  float: left;
+}
+
+.score {
+  padding: 10px 10px 0 10px;
+  float: left;
+  color: #c6c6c6;
+}
+
+.domain {
+
+}
+
+.post-info {
+
+}
