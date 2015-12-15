@@ -1,7 +1,16 @@
 <div ng-if="vm.comment.body">
-  <div class="comment-body">
-    {{vm.comment.body}}
+  <div class="media">
+  <div class="media-left score">
+    {{::vm.comment.ups}}
   </div>
+    <div class="media-body comment-body">
+      <div>
+        <span>{{::vm.comment.author}} {{::vm.comment.created_utc | toLocal | amTimeAgo}}</span>
+      </div>
+      <div ng-bind-html="::vm.comment.body | markdown"></div>
+    </div>
+  </div>
+
   <div class="sub-comment">
     <div ng-repeat="reply in vm.comment.replies.data.children">
       <comment-tree ng-if="reply.data.body" comment="reply.data"></comment-tree>

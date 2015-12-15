@@ -11,7 +11,7 @@
 
 .ar-card span {
   font-size: .8em;
-  color: #888;
+  color: $secondaryTextColor;
 }
 
 .ar-card img {
@@ -23,13 +23,14 @@
 .score {
   padding: 10px 10px 0 10px;
   float: left;
-  color: #c6c6c6;
+  color: $scoreTextColor;
 }
 
-.domain {
-
-}
-
-.post-info {
-
+.post-self-text {
+  vertical-align: middle;
+  width: 100%;
+  padding: 5px 10px 5px 10px;
+  margin: 10px 0 0 0;
+  border-radius: 3px;
+  border: 1px solid;
 }

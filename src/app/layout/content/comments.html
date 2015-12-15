@@ -1,8 +1,25 @@
 <div class="ar-container">
 
-  <spinner name="{{vm.spinner.name}}" group="vm.spinner.group" show="true">
+  <spinner name="{{::vm.spinner.name}}" group="::vm.spinner.group" show="true">
     <div class="loader"></div>
   </spinner>
+  <div>
+    <div class="media ar-card">
+      <div class="score">{{::vm.post.data.score}}</div>
+      <div class="media-left" ng-if="vm.post.data.thumbnail && vm.post.data.thumbnail != 'self' && vm.post.data.thumbnail != 'default' && vm.post.data.thumbnail != 'nsfw'">
+        <img ng-src="{{::vm.post.data.thumbnail}}">
+      </div>
+      <div class="media-body">
+        <span>{{::vm.post.data.link_flair_text}}</span>
+        <a ng-click="vm.goToExternalLink(vm.post.data.url)">{{::vm.post.data.title}}</a>
+        <span ng-bind="'('+vm.post.data.domain+')'"></span>
+        <div>
+          <span>submitted by {{::vm.post.data.author}} to {{::vm.post.data.subreddit}} about {{::vm.post.data.created_utc | toLocal | amTimeAgo}}</span>
+        </div>
+        <div ng-if="vm.post.data.selftext" class="post-self-text" ng-bind-html="::vm.post.data.selftext_html_safe"></div>
+      </div>
+    </div>
+  </div>
   <div class="comment-card" ng-repeat="comment in vm.post.comments">
     <comment-tree comment="comment.data"></comment-tree>
   </div>

@@ -8,7 +8,7 @@
     .controller('Comments', Controller);
 
   /*@ngInject*/
-  function Controller(redditApi, $stateParams, _, spinnerService) {
+  function Controller(redditApi, $stateParams, _, spinnerService, $sce, $window) {
 
     var post = {
       comments: [],
@@ -22,8 +22,9 @@
 
     // export
     _.extend(this, {
-      post:    post,
-      spinner: spinner
+      post:             post,
+      spinner:          spinner,
+      goToExternalLink: goToExternalLink
     });
 
     init();
@@ -36,7 +37,15 @@
       post.comments = response.comments;
       post.data = response.post;
       spinnerService.hide(spinner.name);
+      markHtmlSafe(post.data);
     }
 
+    function markHtmlSafe(data) {
+      data['selftext_html_safe'] = $sce.trustAsHtml(_.unescape(data.selftext_html));
+    }
+
+    function goToExternalLink(url) {
+      $window.open(url, '_blank');
+    }
   }
 }());
