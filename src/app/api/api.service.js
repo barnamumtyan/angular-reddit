@@ -63,6 +63,8 @@
         t:     opts.time || DEFAULT_TIME,
         after: opts.after
       };
+
+
       return request(route, params, dataTransform);
     }
 
@@ -94,8 +96,9 @@
       ];
 
       var params = {
-        q: opts.query,
-        t: opts.time || DEFAULT_TIME
+        q:     opts.query,
+        t:     opts.time || DEFAULT_TIME,
+        after: opts.after
       };
 
       return request(route, params, dataTransform);

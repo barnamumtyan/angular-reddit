@@ -12,7 +12,9 @@
   function Controller(redditApi, _, $stateParams, $state, spinnerService) {
 
     var posts = {
-      list: []
+      list:     [],
+      loadMore: loadMore,
+      last:     getLastPost
     };
 
     var spinner = {
@@ -36,7 +38,7 @@
      * Get posts from browsing or search depending on the ui-router state
      * @returns {Promise} promise of posts array
      */
-    function getPosts() {
+    function getPosts(after) {
       var requestParams;
       var source;
 
@@ -44,15 +46,17 @@
         case 'search':
           requestParams = {
             query: $stateParams.query,
-            time:  $stateParams.time
+            time:  $stateParams.time,
+            after: after
           };
           source = redditApi.getSearchResults;
           break;
         case 'posts':
           requestParams = {
-            sub:  $stateParams.subReddit,
-            sort: $stateParams.sort,
-            time: $stateParams.time
+            sub:   $stateParams.subReddit,
+            sort:  $stateParams.sort,
+            time:  $stateParams.time,
+            after: after
           };
           source = redditApi.getPosts;
           break;
@@ -68,6 +72,18 @@
     function onPostsLoaded(response) {
       posts.list = response;
       spinnerService.hide(spinner.name);
+    }
+
+    function loadMore(lastPostName) {
+      getPosts(lastPostName).then(onMorePostsLoaded);
+    }
+
+    function onMorePostsLoaded(response) {
+      posts.list = posts.list.concat(response);
+    }
+
+    function getLastPost() {
+      return _.last(posts.list).data;
     }
 
   }

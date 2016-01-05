@@ -1,7 +1,7 @@
 /**
  * Created by barni on 12/9/2015.
  */
-(function() {
+(function () {
   'use strict';
 
   angular.module('layout')
@@ -15,6 +15,7 @@
       controllerAs:     'vm',
       templateUrl:      LAYOUT_PATH + 'content/post.html',
       replace:          true,
+      scope:            {},
       bindToController: {
         post: '='
       }
@@ -33,7 +34,7 @@
   }
 
   function toLocal() {
-    return function(input) {
+    return function (input) {
       var d = new Date(0);
       d.setUTCSeconds(input);
       return d;

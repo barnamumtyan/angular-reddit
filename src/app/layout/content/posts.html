@@ -3,5 +3,8 @@
   <spinner name="{{vm.spinner.name}}" group="vm.spinner.group" show="true">
     <div class="loader"></div>
   </spinner>
-  <ar-post ng-repeat="post in vm.posts.list" post="post.data"></ar-post>
+  <div ng-repeat="post in vm.posts.list track by $index">
+    <ar-post post="post.data"></ar-post>
+    <div ng-if="$index == vm.posts.list.length-5" in-view="$inview&&vm.posts.loadMore(vm.posts.last().name)"></div>
+  </div>
 </div>
